@@ -1,0 +1,79 @@
+
+
+div#sentence {
+    margin-top: 30px;
+}
+
+div#guess {
+    display: inline-block;
+    position: relative;
+}
+
+input#guess-input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.token-options {
+    position: absolute;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    border-bottom: none;
+}
+
+.token-option {
+    padding: 2px 10px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    width: 180px;
+}
+
+.token-option:hover {
+    background: #012074;
+    color: white;
+}
+
+.token-option.selected {
+    background: #012074;
+    color: white;
+}
+
+.modal {
+    display: inherit;
+}
+
+.modal-content {
+    width: 600px;
+    margin: auto;
+    padding: 3%;
+}
+
+div#toolbar {
+    position: absolute;
+    top: 300px;
+    width: 960px;
+}
+
+div#toolbar h2 {
+    font-size: 1.5rem;
+}
+
+p.stat {
+    margin-bottom: 0.5em;
+}
+
+div#guesses-container {
+    background: #eeeeee;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    margin-top: -10px;
+}
+
+span.guess {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}

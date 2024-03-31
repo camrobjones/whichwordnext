@@ -1,0 +1,89 @@
+{% extends "nwp/base.html" %}
+
+{% block content %}
+
+<div class="container" id="app">
+    <div class="row">
+        <div class="col-md-12" id="sentence">
+            <span id="seen">[[seen]]</span>
+            <div id="guess">
+                <input type="text" id="guess-input" v-model="query" @keydown="guessKeydown"/>
+                <div class="token-options" v-if="query">
+                    <div class="token-select">
+                        <div v-for="token in tokenOptions" :key="token" :value="token" class="token-option"
+                        :class="{selected: token == selectedToken}" @click="guessClick(token)">[[ token ]]</div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="toolbar">
+        <div class="col-md">
+            <h2>Overall</h2>
+            <p>No. Passages: [[noPassages]]</p>
+            <p>Total correct: [[totalCorrect]]</p>
+            <p>Skips: [[totalSkips]]</p>
+            <p>Guesses per Correct: [[totalGuessesPerCorrect]]</p>
+            <p>GPT2 Guesses per Correct: [[totalGPT2GuessesPerCorrect]] </p>
+            <p>GPT-2 Guesses per Skip: [[totalGPT2GuessesPerSkip]]</p>
+        </div>
+        <div class="col-md">
+            <h2>Current Passage</h2>
+            <p>No. Guesses: [[passageGuesses]]</p>
+            <p>Tokens Correct: [[passageCorrect]]</p>
+            <p>Skips: [[passageSkips]]</p>
+            <p>Guesses per Correct: [[guessesPerCorrect]]</p>
+            <p>GPT2 Guesses per Correct: [[passageGPT2GuessesPerCorrect]]</p>
+            <p>GPT-2 Guesses per Skip: [[passageGPT2GuessesPerSkip]]</p>
+        </div>
+        <div class="col-md">
+            <h2>Last Token</h2>
+            <p>Token: <span class="guess badge badge-secondary">[[lastToken.replace(" ", "_")]]</span></p>
+            <p>Guesses: [[lastGuesses]]</p>
+            <p>GPT-2 Guesses: [[lastGPT2Guesses]]</p>
+        </div>
+        <div class="col-md">
+            <h2>Current Token</h2>
+            <p>No. Guesses: [[guesses.length]]</p>
+            <p>Guesses:</p>
+            <div id="guesses-container">
+                <span v-for="guess in guesses" :key="guess" class="guess badge badge-secondary">
+                    [[ guess.replace(" ", "_") ]]
+                </span>
+            </div>
+            <button @click="skipToken" class="btn btn-dark">Skip Token</button>
+        </div>
+    </div>
+
+    
+    <!-- Modal -->
+    <div class="modal" id="winModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="winModalLabel">Passage Complete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="stat">Total tokens: [[passage_tokens.length - 1]]</p>
+                    <p class="stat">No. Correct: [[passageCorrect]]</p>
+                    <p class="stat">No. Skips: [[passageSkips]]</p>
+                    <p class="stat">No. Guesses: [[passageGuesses]]</p>
+                    <p class="stat">Guesses per Correct: [[guessesPerCorrect]]</p>
+                    <p class="stat">GPT-2 Guesses per Correct: [[passageGPT2GuessesPerCorrect]]</p>
+                    <p class="stat">GPT-2 Guesses per Skip: [[passageGPT2GuessesPerSkip]]</p>
+                    <p class="stat">Passages complete: [[noPassages]]</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" @click="newGame">New Passage</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
