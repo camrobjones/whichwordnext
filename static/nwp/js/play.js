@@ -119,13 +119,13 @@ const { createApp, ref } = Vue
         guessKeydown(event) {
             // console.log(event.key)
             if (event.key === "ArrowDown") {
-                console.log("down")
+                // console.log("down")
                 let index = this.tokenOptions.indexOf(this.selectedToken)
                 if (index < this.tokenOptions.length - 1) {
                     this.selectedToken = this.tokenOptions[index + 1]
                 }
             } else if (event.key === "ArrowUp") {
-                console.log("up")
+                // console.log("up")
                 let index = this.tokenOptions.indexOf(this.selectedToken)
                 if (index > 0) {
                     this.selectedToken = this.tokenOptions[index - 1]
@@ -135,8 +135,8 @@ const { createApp, ref } = Vue
             } else {
                 setTimeout(() => {
                     app.selectedToken = app.tokenOptions[0]
-                    console.log(app.tokenOptions)
-                    console.log(app.selectedToken)
+                    // console.log(app.tokenOptions)
+                    // console.log(app.selectedToken)
                 }, 100);
             }
         },
@@ -228,7 +228,7 @@ const { createApp, ref } = Vue
             axios.post('/nwp/get_sentence/',
                 {})
             .then(function (response) {
-                console.log(response);
+                // console.log(response);
                 app.passage = response.data.passage
                 app.passage_tokens = response.data.tokens
                 app.seen = app.passage_tokens[0].token
@@ -248,7 +248,7 @@ const { createApp, ref } = Vue
                     "status": "complete"
                 })
             .then(function (response) {
-                console.log(response);
+                // console.log(response);
             })
             .catch(function (error) {
                 console.log(error);

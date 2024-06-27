@@ -31,10 +31,10 @@
 -̶ S̶o̶r̶t̶ u̶s̶e̶r̶ l̶o̶g̶i̶n̶ i̶s̶s̶u̶e̶
 
 # Push
-    - install guest_user
-    - add auth backend
-    - push main
-    - migrate
+    -̶ i̶n̶s̶t̶a̶l̶l̶ g̶u̶e̶s̶t̶_̶u̶s̶e̶r̶
+    -̶ a̶d̶d̶ a̶u̶t̶h̶ b̶a̶c̶k̶e̶n̶d̶
+    -̶ p̶u̶s̶h̶ m̶a̶i̶n̶
+    -̶ m̶i̶g̶r̶a̶t̶e̶
 
 
 # v2

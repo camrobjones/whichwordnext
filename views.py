@@ -8,7 +8,7 @@ from nwp.models import Passage, PassageToken, Profile, TokenGuess, Skip, Passage
 # Create your views here.
 
 def home(request):
-    return render(request, 'nwp/home.html')
+    return play(request)
 
 @allow_guest_user
 def play(request):
